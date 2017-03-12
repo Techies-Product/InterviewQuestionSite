@@ -9,7 +9,7 @@ namespace InterviewSite.Models
 {
     public class Database
     {
-        public SqlConnection Sql_Connection{ get; set; }
+        public SqlConnection Sql_Connection { get; set; }
         public Database()
         {
             Sql_Connection = new SqlConnection()
@@ -17,14 +17,14 @@ namespace InterviewSite.Models
                 ConnectionString = "Server=" + ConfigurationManager.AppSettings["Server"] + ";database=" + ConfigurationManager.AppSettings["Database"] + ";UID=" + ConfigurationManager.AppSettings["UID"] + ";Password=" + ConfigurationManager.AppSettings["pwd"]
             };
         }
-        
-        public void RunProcedure(string ProcedureName,SqlParameter[] param,out DataSet ds)
+
+        public void RunProcedure(string ProcedureName, SqlParameter[] param, out DataSet ds)
         {
             SqlConnection con = Sql_Connection;
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("GetCountries", con)
+                SqlCommand cmd = new SqlCommand(ProcedureName, con)
                 {
                     CommandType = CommandType.StoredProcedure,
                 };
@@ -44,6 +44,24 @@ namespace InterviewSite.Models
             {
                 con.Close();
             }
+        }
+
+        internal SqlParameter MakeInParameter(string ParameterName, SqlDbType DbType, int ParameterSize, object value)
+        {
+            SqlParameter param = new SqlParameter(ParameterName, DbType, ParameterSize)
+            {
+                Value = value,
+                Direction = ParameterDirection.Input
+            };
+            return param;
+        }
+        internal SqlParameter MakeOutParameter(string ParameterName, SqlDbType DbType, int ParameterSize)
+        {
+            SqlParameter param = new SqlParameter(ParameterName, DbType, ParameterSize)
+            {
+                Direction = ParameterDirection.Output
+            };
+            return param;
         }
     }
 }

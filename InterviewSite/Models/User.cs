@@ -30,7 +30,7 @@ namespace InterviewSite.Models
         public string GoogleProfile { get; set; }
         public string GoogleAccessToken { get; set; }
         public bool IsBlocked { get; set; }
-
+        public string User_Unique_Name { get; set; }
         public virtual Country Countries{ get; set; }
     }
 }
