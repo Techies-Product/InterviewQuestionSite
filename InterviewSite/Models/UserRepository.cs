@@ -52,7 +52,8 @@ namespace InterviewSite.Models
                             LastName = r.Field<string>("LastName"),
                             User_Unique_Name = r.Field<string>("User_Unique_Name"),
                             UserId = r.Field<string>("UserId"),
-                            UserType = r.Field<string>("UserType")
+                            UserType = r.Field<string>("UserType"),
+                            Photo = r.Field<string>("Photo")
                         });
                 }
             }
