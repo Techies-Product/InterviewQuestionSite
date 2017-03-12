@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +15,7 @@ namespace InterviewSite.Models
         public string Password { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        [ForeignKey("Countries")]
         public int Country { get; set; }
         public int TotalPoints { get; set; }
         public string RegistrationIpAddress { get; set; }
@@ -28,5 +30,7 @@ namespace InterviewSite.Models
         public string GoogleProfile { get; set; }
         public string GoogleAccessToken { get; set; }
         public bool IsBlocked { get; set; }
+
+        public virtual Country Countries{ get; set; }
     }
 }
