@@ -15,6 +15,7 @@ namespace InterviewSite.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         public string Email { get; set; }
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public string City { get; set; }
         public string State { get; set; }
