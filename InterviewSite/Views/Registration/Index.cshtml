@@ -61,8 +61,7 @@
         <div class="interview-inputs">
             <div class="label-container">@Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "interview-label" })</div>
             <div class="editor-container">
-                @Html.DropDownList("id", new SelectList(ViewBag.Countries, "id", "CountryName"), htmlAttributes: new { @class = "interview-ddl" })
-                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                @Html.DropDownList("Country", new SelectList(ViewBag.Countries, "id", "CountryName"), htmlAttributes: new { @class = "interview-ddl" })
             </div>
         </div>
 

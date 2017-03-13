@@ -21,7 +21,7 @@ namespace InterviewSite.Models
         {
             Database db = new Database();
             DataSet ds = new DataSet();
-            SqlParameter[] param = new SqlParameter[10];
+            SqlParameter[] param = new SqlParameter[17];
             param[0] = db.MakeInParameter("@UserId", SqlDbType.VarChar, 50, usr.UserId);
             param[1] = db.MakeInParameter("@FirstName", SqlDbType.NVarChar, 100, usr.FirstName);
             param[2] = db.MakeInParameter("@LastName", SqlDbType.NVarChar, 100, usr.LastName);
