@@ -1,107 +1,52 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
+﻿* {margin: 0;padding: 0;font-family: "Open Sans";}
+h1 {font-size: 18px;}
+h2 {font-size: 16px;}
+h3 {font-size: 14px;}
+.header a {text-decoration: none;}
+.interview-label {color: #666666;display: inline-block;font-size: 16px;}
+.interview-input {height: 18px;width: 60%;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;min-width: 50px;background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px;margin-bottom: 10px;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-shadow: inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+.interview-ddl {height: 32px;width:64%;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;min-width: 50px;background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px;margin-bottom: 10px;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-shadow: inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+.interview-btn {display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;color: #fff;background-color: #337ab7;border-color: #2e6da4;}
+.interview-btn.focus,.interview-btn:focus {color: #fff;background-color: #286090;border-color: #122b40;}
+.interview-btn:hover {color: #fff;background-color: #286090;border-color: #204d74;}
+.interview-btn.active,.interview-btn:active {color: #fff;background-color: #286090;border-color: #204d74;}
+.interview-btn.active.focus,.interview-btn.active:focus,.interview-btn.active:hover,.interview-btn:active.focus,.interview-btn:active:focus,.interview-btn:active:hover {color: #fff;background-color: #204d74;border-color: #122b40;}
+.interview-btn.active,.interview-btn:active {background-image: none;}
+.interview-btn.disabled.focus,.interview-btn.disabled:focus,.interview-btn.disabled:hover,.interview-btn[disabled].focus,.interview-btn[disabled]:focus,.interview-btn[disabled]:hover {background-color: #337ab7;border-color: #2e6da4;}
+.main-container {width: 100%;}
+.label-container {display: inline-block;width: 20%;float: left;}
+.editor-container {display: inline-block;width: 80%;float: left;}
+.header {width: 70%;height: 50px;margin: 0 auto;}
+.interview-inputs {width: 100%;display: inline-table;}
+.body {width: 70%;height: 600px;margin: 0 auto;margin-top: 30px;}
+.menu {width: 70%;height: 50px;margin: 0 auto;}
+.menu ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;width: 100%;height: 50px;border-bottom: 1px solid #e4e4e4;}
+.menu li {float: left;}
+.menu li a {display: block;color: white;text-align: center;margin: 14px 14px 0 0;text-decoration: none;color: #8f8f8f;}
+.menu li a:hover{color: #2e6da4;font-weight:600;}
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+.header ul.sign-in{list-style-type: none;margin: 0;padding: 0;overflow: hidden;width: 100%;height: 50px;border-bottom: 1px solid #e4e4e4;}
+.header ul.sign-in li {float: left;}
+.header ul.sign-in li a {display: block;color: white;text-align: center;margin: 14px 14px 0 0;text-decoration: none;color: #006bc7;}
+.header ul.sign-in li a:hover{color: #2e6da4;font-weight:600;}
+.header ul.sign-in li {float: right;margin:0 0 0 4px;}
+.header ul.sign-in li:not(:last-child):before {content: "/";float:left;margin:14px 0 0 0;color:#006bc7;}
+.header ul.sign-in li a{margin:14px 0px 0px 14px;}
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+.header-container {border-bottom: 1px solid #ccc;}
+.body .content {width: 70%;float: left;}
+.body aside {float: left;background: #000;width: 30%;height: 300px;}
+footer {border-top: 1px solid #ccc;position: fixed;bottom: 0;width: 100%;background:#ffffff;}
+.footer {width: 70%;margin: 0 auto;}
+.footer ul.footer-menu{list-style-type: none;margin: 0;padding: 0;overflow: hidden;width: 100%;height: 50px;display: inline;}
+.footer ul.footer-menu li {float: left;}
+.footer ul.footer-menu li a {display: block;color: white;text-align: center;margin: 14px 14px 0 0;text-decoration: none;color: #8f8f8f;}
+.footer ul.footer-menu li a:hover{color: #2e6da4;font-weight:600;}
+.footer ul.footer-menu li:not(:first-child):before {content: "|";float:left;margin:13px 0 0;color:#8f8f8f;padding-left:3px;}
+.footer ul.footer-menu li a{margin:14px 0px 0px 14px;}
+.footer p {float:right;margin-top:14px;color:#8f8f8f;padding-bottom:14px;}
 
-
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.main-container {
-    width: 100%;
-}
-
-.header {
-    width: 70%;
-    height: 50px;
-    margin: 0 auto;
-}
-
-li a.header {
-    float: left;
-}
-
-.menu {
-    width: 70%;
-    height: 50px;
-    margin: 0 auto;
-}
-
-.body {
-    width: 70%;
-    height: 600px;
-    margin: 0 auto;
-}
-
-.footer {
-    width: 100%;
-    height: 50px;
-    //background-color:#ffff00;
-}
-
-
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    //background-color: #333;
-    width: 100%;
-    height: 50px;
-}
-
-li {
-    float: left;
-    color: #000000;
-}
-
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        color: #000000;
-    }
-
-        li a:hover:not(.active) {
-            color: #00FFFF;
-        }
-
-.header ul {
-    border-bottom: 1px solid #ccc;
-}
-
-    .header ul li {
-        float: right;
-    }
-
-.header-container {
-    border-bottom: 1px solid #ccc;
-}
-
-.content {
-}
-
-.footer {
-    width: 70%;
-    height: 50px;
-    margin: 0 auto;
+@media(max-width:768px) {
+    aside {display:none;}
+    .body .content,.label-container,.editor-container,.interview-input{width:100%;}
 }

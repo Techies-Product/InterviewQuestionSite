@@ -3,39 +3,50 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <title>@ViewBag.Title | Interview Question</title>
+    <link rel="stylesheet" href="~/Content/Site.css" />
 </head>
 <body>
     <div class='main-container'>
         <div class='header-container'>
-            <div class='header'> <ul> <li><a href="#home">Sign in/Sign Up</a></li> </ul> </div>
+            <div class='header'> 
+                <ul class="sign-in"> 
+                    <li><a href="/Registration">Sign up</a></li> 
+                    <li><a href="/Login">Sign in</a></li> 
+                </ul> 
+            </div>
             <div class='menu'>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#news">Category</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li style="float:right"><a class="active"
                 </ul>
             </div>
         </div>
         <div class='body'>
             <div class='content'>
                 @RenderBody()
-               
             </div>
             <aside></aside>
         </div>
-        <div class='footer'>
-            <p>for futher info contact info....</p>
-        </div>
+        <footer>
+            <div class='footer'>
+                <ul class="footer-menu">
+                    <li><a href="javascript:void(0)">item1</a></li>
+                    <li><a href="javascript:void(0)">item2</a></li>
+                    <li><a href="javascript:void(0)">item3</a></li>
+                    <li><a href="javascript:void(0)">item4</a></li>
+                    <li><a href="javascript:void(0)">item5</a></li>
+                    <li><a href="javascript:void(0)">item6</a></li>
+                    <li><a href="javascript:void(0)">item7</a></li>
+                </ul>
+                <p>&copy; @DateTime.Now.Year @System.Configuration.ConfigurationManager.AppSettings["SiteName"].ToString() . All contents are copyright of their users</p>
+            </div>
+        </footer>
 
     </div>
 
-    
-       
-        
+    <script src="~/Scripts/jquery-1.10.2.min.js" async></script>
+    <script src="~/Scripts/common.js"></script>
 </body>
 </html>
