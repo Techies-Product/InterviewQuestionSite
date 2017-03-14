@@ -18,15 +18,21 @@ function deferLoginScriptLoad() {
         var returnVal=true;
         if (_email.length === 0) {
             returnVal=false;
-            alert("Please Enter Email / User Name");
+            jQuery("#errorEmail").html("Please Enter Email / User Name").show();
         }
         if (_password.length === 0) {
             returnVal = false;
-            alert("Please Enter Password");
+            jQuery("#errorPassword").html("Please Enter Password").show();
         }
         return returnVal;
     });
     jQuery("#chkIsRememberMe").change(function () {
         jQuery("#hddIsRememberMe").val((jQuery(this).is(":checked")));
+    });
+    jQuery("#Email").keypress(function () {
+        jQuery("#errorEmail").hide();
+    });
+    jQuery("#Password").keypress(function () {
+        jQuery("#errorPassword").hide();
     });
 }

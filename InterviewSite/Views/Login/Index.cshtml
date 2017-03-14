@@ -10,12 +10,14 @@
             <div class="label-container"><label class="interview-label" for="Email">User Name / Email</label></div>
             <div class="editor-container">
                 <input class="interview-input" id="Email" name="Email" type="text" value="">
+                <div class="error" id="errorEmail">@ViewBag.EmailError</div>
             </div>
         </div>
         <div class="interview-inputs">
             <div class="label-container"><label class="interview-label" for="Password">Password</label></div>
             <div class="editor-container">
                 <input class="interview-input" id="Password" name="Password" type="password" value="">
+                <div class="error" id="errorPassword">@ViewBag.PasswordError</div>
             </div>
         </div>
         <div class="interview-inputs">
@@ -27,6 +29,7 @@
         </div>
         <div class="interview-inputs">
             <input id="btnLogin" type="submit" value="Login" class="interview-btn" style="margin-left:20%;" />
+            <div class="error" style="margin-left:20%;margin-top:10px;">@ViewBag.LoginError</div>
         </div>
     </div>
 }
