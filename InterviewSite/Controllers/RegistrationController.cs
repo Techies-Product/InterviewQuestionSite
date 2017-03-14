@@ -24,7 +24,7 @@ namespace InterviewSite.Controllers
             if (ValidateRegistrationData(model))
             {
                 UserRepository userRepo = new UserRepository();
-                if (string.IsNullOrEmpty(userRepo.GetUserId(model.Email)))
+                if (!string.IsNullOrEmpty(userRepo.GetUserId(model.Email)))
                 {
                     return "This Email Id Already Exists";
                 }

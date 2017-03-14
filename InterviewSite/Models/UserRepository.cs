@@ -31,7 +31,7 @@ namespace InterviewSite.Models
                 db.RunProcedure("GetUserId", param, out ds);
                 if (!object.Equals(ds, null))
                 {
-                    if (object.Equals(ds.Tables, null))
+                    if (!object.Equals(ds.Tables, null))
                     {
                         if (ds.Tables.Count > 0)
                         {
