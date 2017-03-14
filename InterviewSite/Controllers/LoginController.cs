@@ -45,6 +45,10 @@ namespace InterviewSite.Controllers
                 {
                     ViewBag.LoginError = "Invalid credentials";
                 }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
             return View();
         }
