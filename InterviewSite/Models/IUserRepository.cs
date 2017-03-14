@@ -9,5 +9,8 @@ namespace InterviewSite.Models
     {
         IEnumerable<User> Users { get; }
         User SaveUser(User usr);
+        string GetUserId(string Email);
+
+        User UserLogin(string Email, string Password);
     }
 }
