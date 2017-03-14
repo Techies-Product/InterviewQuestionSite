@@ -23,32 +23,47 @@ function deferRegisterScriptLoad() {
         var _confirmPassword=jQuery("#ConfirmPassword").val().trim();
         if (_firstName.length === 0) {
             returnVal = false;
-            alert("Please Enter First Name");
+            jQuery("#errorFirstName").html("Please enter first name");
         }
         if (_lastName.trim().length === 0) {
             returnVal = false;
-            alert("Please Enter Last Name");
+            jQuery("#errorLastName").html("Please enter last name");
         }
         if (_email.length === 0) {
             returnVal = false;
-            alert("Please Enter Email");
+            jQuery("#errorEmail").html("Please enter email");
         }
         else if (!emailRegex.test(_email)) {
             returnVal =false;
-            alert("Please enter valid email address");
+            jQuery("#errorEmail").html("Please enter valid email address");
         }
         if (_password.trim().length === 0) {
             returnVal = false;
-            alert("Please Enter Password");
+            jQuery("#errorPassword").html("Please enter password");
         }
         else if (!strongPasswordRegex.test(_password)) {
             returnVal = false;
-            alert("Password must be Strong");
+            jQuery("#errorPassword").html("Password must contain:<br/>Minimum 8 characters.<br/>1 or more lowercase laters<br/>1 or more uppercase laters<br/>1 or more numbers<br/>1 or more special characters");
         }
-        if (_confirmPassword != _password) {
+        else if (_confirmPassword != _password) {
             returnVal=false;
-            alert("Password does not match");
+            jQuery("#errorConfirmPassword").html("Password does not match");
         }
         return returnVal;
+    });
+    jQuery("#FirstName").keypress(function () {
+        jQuery("#errorFirstName").hide();
+    });
+    jQuery("#LastName").keypress(function () {
+        jQuery("#errorLastName").hide();
+    });
+    jQuery("#Email").keypress(function () {
+        jQuery("#errorEmail").hide();
+    });
+    jQuery("#Password").keypress(function () {
+        jQuery("#errorPassword").hide();
+    });
+    jQuery("#ConfirmPassword").keypress(function () {
+        jQuery("#errorConfirmPassword").hide();
     });
 }

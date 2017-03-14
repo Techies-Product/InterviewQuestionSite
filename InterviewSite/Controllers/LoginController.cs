@@ -21,6 +21,10 @@ namespace InterviewSite.Controllers
         [HttpPost]
         public ActionResult Index(string Email, string Password, bool IsRememberMe)
         {
+            if (!object.Equals(Session["UserId"], null))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             UserRepository userRepo = new UserRepository();
             bool isError = false;
             string UserId = userRepo.GetUserId(Email);

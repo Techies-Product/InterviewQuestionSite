@@ -50,12 +50,12 @@ namespace InterviewSite.Controllers
         private bool ValidateRegistrationData(User model)
         {
             bool returnVal = true;
-            if (model.FirstName.Trim().Length == 0){returnVal = false;}
-            if (model.LastName.Trim().Length == 0) { returnVal = false; }
-            if (model.Email.Trim().Length == 0) { returnVal = false; }
-            bool IsEmailValid=Regex.IsMatch(model.Email.Trim(), @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
-            if (!IsEmailValid) { returnVal = false; }
-            if (model.Password.Trim().Length == 0) { returnVal = false; }
+            if (model.FirstName.Trim().Length == 0) { returnVal = false; ViewBag.ErrorFirstName = "Please Enter FirstName"; }
+            if (model.LastName.Trim().Length == 0) { returnVal = false; ViewBag.ErrorLastName = "Please Enter LastName"; }
+            if (model.Email.Trim().Length == 0) { returnVal = false; ViewBag.ErrorEmail = "Please Enter Email"; }
+            bool IsEmailValid = Regex.IsMatch(model.Email.Trim(), @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            if (!IsEmailValid) { returnVal = false; ViewBag.ErrorEmail = "Email Address is Not Valid"; }
+            if (model.Password.Trim().Length == 0) { returnVal = false; ViewBag.ErrorPassword = "Please Enter Password"; }
             return returnVal;
         }
     }

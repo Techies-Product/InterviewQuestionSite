@@ -13,6 +13,7 @@
             <div class="label-container">@Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "interview-label" })</div>
             <div class="editor-container">
                 @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "interview-input" } })
+                <div class="error" id="errorFirstName">@ViewBag.ErrorFirstName</div>
             </div>
         </div>
 
@@ -20,6 +21,7 @@
             <div class="label-container">@Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "interview-label" })</div>
             <div class="editor-container">
                 @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "interview-input" } })
+                <div class="error" id="errorLastName">@ViewBag.ErrorLastName</div>
             </div>
         </div>
 
@@ -27,6 +29,7 @@
             <div class="label-container">@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "interview-label" })</div>
             <div class="editor-container">
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "interview-input" } })
+                <div class="error" id="errorEmail">@ViewBag.ErrorEmail</div>
             </div>
         </div>
 
@@ -34,6 +37,7 @@
             <div class="label-container">@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "interview-label" })</div>
             <div class="editor-container">
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "interview-input" } })
+                <div class="error" id="errorPassword">@ViewBag.ErrorPassword</div>
             </div>
         </div>
 
@@ -41,6 +45,7 @@
             <div class="label-container">@Html.Label("ConfirmPassword","Confirm Password", htmlAttributes: new { @class = "interview-label" })</div>
             <div class="editor-container">
                 @Html.Password("ConfirmPassword",null,htmlAttributes:new { @class= "interview-input" })
+                <div class="error" id="errorConfirmPassword"></div>
             </div>
         </div>
 
@@ -62,6 +67,7 @@
             <div class="label-container">@Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "interview-label" })</div>
             <div class="editor-container">
                 @Html.DropDownList("Country", new SelectList(ViewBag.Countries, "id", "CountryName"), htmlAttributes: new { @class = "interview-ddl" })
+                <div class="error" id="errorCountry">@ViewBag.ErrorCountry</div>
             </div>
         </div>
 
