@@ -1,0 +1,8 @@
+﻿ul.recent-questions {list-style:none;}
+ul.recent-questions li{margin:10px 0 0 0;}
+ul.recent-questions li a{text-decoration:none;}
+ul.recent-questions li .question a.title{color:#333;}
+ul.recent-questions li .question a.title:hover{color:#006bc7;font-weight:600;}
+ul.recent-questions li .question p{color:#9c9c9c;font-size:16px;}
+ul.recent-questions li .question p a.author{color:#9c9c9c;font-size:14px;}
+ul.recent-questions li .question p a.date{color:#9c9c9c;font-size:14px;}
