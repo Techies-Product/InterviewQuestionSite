@@ -23,6 +23,11 @@ namespace InterviewSite.Controllers
         {
             if (ValidateRegistrationData(model))
             {
+                UserRepository userRepo = new UserRepository();
+                if (string.IsNullOrEmpty(userRepo.GetUserId(model.Email)))
+                {
+                    return "This Email Id Already Exists";
+                }
                 model.UserId = CommonFunctions.GetUserId();
                 model.RegistrationIpAddress = Request.UserHostAddress;
 
@@ -34,7 +39,6 @@ namespace InterviewSite.Controllers
                 model.GoogleProfile = object.Equals(model.GoogleProfile, null) ? "" : model.GoogleProfile;
                 model.TwitterHandle = object.Equals(model.TwitterHandle, null) ? "" : model.TwitterHandle;
                 model.TwitterAccessToken = object.Equals(model.TwitterAccessToken, null) ? "" : model.TwitterAccessToken;
-                UserRepository userRepo = new UserRepository();
                 userRepo.SaveUser(model);
                 return "Successfully Registered";
             }

@@ -13,5 +13,10 @@ namespace InterviewSite.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Index(string Email,string Password,bool IsRememberMe)
+        {
+            return View();
+        }
     }
 }
