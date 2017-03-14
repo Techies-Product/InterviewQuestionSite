@@ -32,7 +32,6 @@ namespace InterviewSite.Controllers
                 model.RegistrationIpAddress = Request.UserHostAddress;
 
                 model.Password = Convert.ToBase64String(CommonFunctions.Encryption(model.Password, model.UserId));
-
                 model.FacebookAccessToken = object.Equals(model.FacebookAccessToken, null) ? "" : model.FacebookAccessToken;
                 model.FacebookProfile = object.Equals(model.FacebookProfile, null) ? "" : model.FacebookProfile;
                 model.GoogleAccessToken = object.Equals(model.GoogleAccessToken, null) ? "" : model.GoogleAccessToken;
