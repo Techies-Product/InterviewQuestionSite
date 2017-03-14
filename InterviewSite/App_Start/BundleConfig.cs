@@ -21,6 +21,10 @@ namespace InterviewSite.App_Start
             bundles.Add(new StyleBundle("~/css/login")
                 .Include(
                 "~/Content/Site.css"));
+            bundles.Add(new StyleBundle("~/css/home")
+                .Include(
+                "~/Content/Site.css",
+                "~/Content/home_page.css"));
         }
         public static void JsBundling(BundleCollection bundles)
         {
@@ -35,6 +39,12 @@ namespace InterviewSite.App_Start
                 "~/Scripts/jquery-1.10.2.js",
                 "~/Scripts/common.js",
                 "~/Scripts/login.js"));
+
+            bundles.Add(new ScriptBundle("~/js/home")
+                .Include(
+                "~/Scripts/jquery-1.10.2.js",
+                "~/Scripts/common.js"));
+
         }
         
     }
