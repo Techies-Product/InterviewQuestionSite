@@ -9,6 +9,8 @@ namespace InterviewSite.Models
 {
     public class UserRepository : IUserRepository
     {
+        Database db;
+        DataSet ds;
         public IEnumerable<User> Users
         {
             get
@@ -17,11 +19,44 @@ namespace InterviewSite.Models
             }
         }
 
+        public string GetUserId(string Email)
+        {
+            db = new Database();
+            ds = new DataSet();
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = db.MakeInParameter("@Email", SqlDbType.VarChar, 100, Email);
+            string UserId=null;
+            try
+            {
+                db.RunProcedure("GetUserId", param, out ds);
+                if (!object.Equals(ds, null))
+                {
+                    if (object.Equals(ds.Tables, null))
+                    {
+                        if (ds.Tables.Count > 0)
+                        {
+                            UserId=ds.Tables[0].Rows[0]["UserId"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception exp)
+            {
+
+            }
+            finally
+            {
+                ResetObject();
+            }
+            return UserId;
+        }
+
         public User SaveUser(User usr)
         {
-            Database db = new Database();
-            DataSet ds = new DataSet();
+            db = new Database();
+            ds = new DataSet();
             SqlParameter[] param = new SqlParameter[17];
+            User ReturnUserInfo = new User();
             param[0] = db.MakeInParameter("@UserId", SqlDbType.VarChar, 50, usr.UserId);
             param[1] = db.MakeInParameter("@FirstName", SqlDbType.NVarChar, 100, usr.FirstName);
             param[2] = db.MakeInParameter("@LastName", SqlDbType.NVarChar, 100, usr.LastName);
@@ -44,7 +79,7 @@ namespace InterviewSite.Models
                 db.RunProcedure("UserRegistration", param, out ds);
                 if (Convert.ToInt32(param[16].Value.ToString()) == 1)
                 {
-                    ds.Tables[0].AsEnumerable()
+                    ReturnUserInfo=ds.Tables[0].AsEnumerable()
                         .Select(r => new User
                         {
                             Email = r.Field<string>("Email"),
@@ -54,14 +89,30 @@ namespace InterviewSite.Models
                             UserId = r.Field<string>("UserId"),
                             UserType = r.Field<string>("UserType"),
                             Photo = r.Field<string>("Photo")
-                        });
+                        }).FirstOrDefault();
                 }
             }
             catch (Exception exp)
             {
 
             }
-            return null;
+            finally
+            {
+                ResetObject();
+            }
+            return ReturnUserInfo;
+        }
+
+        public User UserLogin(string Email, string Password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResetObject()
+        {
+            ds = null;
+            db = null;
         }
     }
+
 }
