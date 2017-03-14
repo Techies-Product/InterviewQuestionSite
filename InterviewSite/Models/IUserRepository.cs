@@ -11,6 +11,6 @@ namespace InterviewSite.Models
         User SaveUser(User usr);
         string GetUserId(string Email);
 
-        User UserLogin(string Email, string Password);
+        User UserLogin(string Email, string Password,string IpAddr);
     }
 }

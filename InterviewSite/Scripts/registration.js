@@ -1,4 +1,5 @@
-﻿var strongPasswordRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})');
+﻿/// <reference path="jquery-1.10.2.js" />
+var strongPasswordRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})');
 var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 document.addEventListener('DOMContentLoaded', function () {
     deferRegisterLayoutLoading();
@@ -13,7 +14,7 @@ function deferRegisterLayoutLoading() {
     }
 }
 function deferRegisterScriptLoad() {
-    jQuery("#btnRegister").click(function () {
+    jQuery("#frmRegister").submit(function () {
         var returnVal = true;
         var _firstName=jQuery("#FirstName").val().trim();
         var _lastName=jQuery("#LastName").val().trim();

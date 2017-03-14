@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Registration";
 }
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmRegister" }))
 {
     @Html.AntiForgeryToken()
 
@@ -73,11 +73,11 @@
 }
 
 @section Styles{
-    @System.Web.Optimization.Styles.Render("~/css/registration")
+    @Styles.Render("~/css/registration")
 }
 
 @section Scripts{
-    @System.Web.Optimization.Scripts.Render("~/js/registration")
+    @Scripts.Render("~/js/registration")
 }
 
 

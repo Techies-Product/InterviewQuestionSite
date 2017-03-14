@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmLogin" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="interview-inputs">
+            <div class="label-container"><label class="interview-label" for="Email">User Name / Email</label></div>
+            <div class="editor-container">
+                <input class="interview-input" id="Email" name="Email" type="text" value="">
+            </div>
+        </div>
+        <div class="interview-inputs">
+            <div class="label-container"><label class="interview-label" for="Password">Password</label></div>
+            <div class="editor-container">
+                <input class="interview-input" id="Password" name="Password" type="password" value="">
+            </div>
+        </div>
+        <div class="interview-inputs">
+            <div class="interview-input-checkbox">
+                <input type="checkbox" name="chkIsRememberMe" id="chkIsRememberMe" checked style="margin-left:20%;" class="interview-checkbox"/>
+                <label class="interview-label" for="chkIsRememberMe">Remember Me</label>
+                <input type="hidden" name="IsRememberMe" id="hddIsRememberMe" value="true" />
+            </div>
+        </div>
+        <div class="interview-inputs">
+            <input id="btnLogin" type="submit" value="Login" class="interview-btn" style="margin-left:20%;" />
+        </div>
+    </div>
+}
+
+
+@section Styles{
+    @Styles.Render("~/css/login")
+}
+
+@section Scripts{
+    @Scripts.Render("~/js/login")
+}

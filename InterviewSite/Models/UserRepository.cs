@@ -103,27 +103,30 @@ namespace InterviewSite.Models
             return ReturnUserInfo;
         }
 
-        public User UserLogin(string Email, string Password)
+        public User UserLogin(string UserId, string Password,string IpAddr)
         {
-            User usr = new User();
+            User usr = null;
             try
             {
                 db = new Database();
                 ds = new DataSet();
-                SqlParameter[] param = new SqlParameter[2];
-                param[0] = db.MakeInParameter("@Email",SqlDbType.VarChar,100,Email);
+                SqlParameter[] param = new SqlParameter[3];
+                param[0] = db.MakeInParameter("@UserId",SqlDbType.VarChar,50,UserId);
                 param[1] = db.MakeInParameter("@Password", SqlDbType.VarChar,-1,Password);
+                param[2] = db.MakeInParameter("@IpAddr", SqlDbType.VarChar,50,IpAddr);
                 db.RunProcedure("UserLogin", param, out ds);
                 if (!object.Equals(ds, null))
                 {
                     if (ds.Tables.Count > 0)
                     {
+                        usr = new User();
                         usr.Email=ds.Tables[0].Rows[0]["Email"].ToString();
                         usr.FirstName = ds.Tables[0].Rows[0]["FirstName"].ToString();
                         usr.LastName=ds.Tables[0].Rows[0]["LastName"].ToString();
                         usr.User_Unique_Name = ds.Tables[0].Rows[0]["User_Unique_Name"].ToString();
                         usr.UserId = ds.Tables[0].Rows[0]["UserId"].ToString();
                         usr.UserType= ds.Tables[0].Rows[0]["UserType"].ToString();
+                        usr.Photo = ds.Tables[0].Rows[0]["Photo"].ToString();
                     }
                 }
             }
