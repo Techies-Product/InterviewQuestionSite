@@ -10,10 +10,20 @@
     <div class='main-container'>
         <div class='header-container'>
             <div class='header'> 
+                @if (object.Equals(Session["UserId"], null))
+                {
                 <ul class="sign-in"> 
                     <li><a href="/Registration">Sign up</a></li> 
                     <li><a href="/Login">Sign in</a></li> 
-                </ul> 
+                </ul>
+                }
+                else
+                {
+                    <ul class="">
+                        <li>Hello !<a href="members/@Session["User_Unique_Name"]">@Session["FirstName"] @Session["LastName"]</a></li>
+                        <li><a href="Logout">Logout</a></li>
+                    </ul>
+                }
             </div>
             <div class='menu'>
                 <ul>

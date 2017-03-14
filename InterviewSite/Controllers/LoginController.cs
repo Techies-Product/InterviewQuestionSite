@@ -12,6 +12,10 @@ namespace InterviewSite.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            if (!object.Equals(Session["UserId"], null))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
         [HttpPost]
