@@ -23,31 +23,31 @@ function deferRegisterScriptLoad() {
         var _confirmPassword=jQuery("#ConfirmPassword").val().trim();
         if (_firstName.length === 0) {
             returnVal = false;
-            jQuery("#errorFirstName").html("Please enter first name");
+            jQuery("#errorFirstName").html("Please enter first name").show();
         }
         if (_lastName.trim().length === 0) {
             returnVal = false;
-            jQuery("#errorLastName").html("Please enter last name");
+            jQuery("#errorLastName").html("Please enter last name").show();
         }
         if (_email.length === 0) {
             returnVal = false;
-            jQuery("#errorEmail").html("Please enter email");
+            jQuery("#errorEmail").html("Please enter email").show();
         }
         else if (!emailRegex.test(_email)) {
             returnVal =false;
-            jQuery("#errorEmail").html("Please enter valid email address");
+            jQuery("#errorEmail").html("Please enter valid email address").show();
         }
         if (_password.trim().length === 0) {
             returnVal = false;
-            jQuery("#errorPassword").html("Please enter password");
+            jQuery("#errorPassword").html("Please enter password").show();
         }
         else if (!strongPasswordRegex.test(_password)) {
             returnVal = false;
-            jQuery("#errorPassword").html("Password must contain:<br/>Minimum 8 characters.<br/>1 or more lowercase laters<br/>1 or more uppercase laters<br/>1 or more numbers<br/>1 or more special characters");
+            jQuery("#errorPassword").html("Password must contain:<br/>Minimum 8 characters.<br/>1 or more lowercase laters<br/>1 or more uppercase laters<br/>1 or more numbers<br/>1 or more special characters").show();
         }
         else if (_confirmPassword != _password) {
             returnVal=false;
-            jQuery("#errorConfirmPassword").html("Password does not match");
+            jQuery("#errorConfirmPassword").html("Password does not match").show();
         }
         return returnVal;
     });
