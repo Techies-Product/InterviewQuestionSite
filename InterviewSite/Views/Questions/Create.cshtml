@@ -1,0 +1,49 @@
+﻿@model InterviewSite.Models.Question
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutFullPage.cshtml";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <div class="interview-inputs">
+            <div class="label-container">@Html.LabelFor(model => model.QuestionTitle, htmlAttributes: new { @class = "interview-label", @style= "width:100%" })</div>
+            <div class="editor-container">
+                @Html.EditorFor(model => model.QuestionTitle, new { htmlAttributes = new { @class = "interview-input" } })
+                @Html.ValidationMessageFor(model => model.QuestionTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="interview-inputs">
+            <div class="label-container">@Html.LabelFor(model => model.QuestionDetail, htmlAttributes: new { @class = "interview-label", @style = "width:100%" })</div>
+            <div class="editor-container">
+                @Html.EditorFor(model => model.QuestionDetail, new { htmlAttributes = new { @class = "interview-input" } })
+                @Html.ValidationMessageFor(model => model.QuestionDetail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="interview-inputs">
+            <div class="label-container">@Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "interview-label", @style = "width:100%" })</div>
+            <div class="editor-container">
+                @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "interview-input" } })
+                @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="interview-inputs">
+                <input id="btnRegister" type="submit" value="Submit" class="interview-btn" style="margin-left:20%;" />
+        </div>
+    </div>
+}
+
+@section Styles{
+    @Styles.Render("~/css/create_question")
+}
+
+@section Scripts{
+    @Scripts.Render("~/js/create_question")
+}

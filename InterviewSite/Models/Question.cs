@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace InterviewSite.Models
 {
@@ -9,6 +11,8 @@ namespace InterviewSite.Models
     {
         public int QuestionId { get; set; }
         public string QuestionTitle { get; set; }
+
+        [AllowHtml]
         public string QuestionDetail { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }

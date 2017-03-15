@@ -22,20 +22,22 @@ h3 {font-size: 14px;}
 .body {width: 70%;height: 600px;margin: 0 auto;margin-top: 30px;}
 .menu {width: 70%;height: 50px;margin: 0 auto;}
 .menu ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;width: 100%;height: 50px;border-bottom: 1px solid #e4e4e4;}
-.menu li {float: left;}
-.menu li a {display: block;color: white;text-align: center;margin: 14px 14px 0 0;text-decoration: none;color: #8f8f8f;}
-.menu li a:hover{color: #2e6da4;font-weight:600;}
+.menu li {float: left;height:100%;}
+.menu li:hover{background:#c1c1c1;cursor:pointer;}
+.menu li a {display: block;color: white;text-align: center;margin: 14px 0 0 0;text-decoration: none;color: #d0d0d0;padding: 0 20px;height:100%;}
+.menu li:hover a{color: #525a65;font-weight:600;}
 
 .header ul.sign-in{list-style-type: none;margin: 0;padding: 0;overflow: hidden;width: 100%;height: 50px;border-bottom: 1px solid #e4e4e4;}
 .header ul.sign-in li {float: left;}
-.header ul.sign-in li a {display: block;color: white;text-align: center;margin: 14px 14px 0 0;text-decoration: none;color: #006bc7;}
-.header ul.sign-in li a:hover{color: #2e6da4;font-weight:600;}
+.header ul.sign-in li a {display: block;color: white;text-align: center;margin: 14px 14px 0 0;text-decoration: none;color: #525a65;}
+.header ul.sign-in li a:hover{font-weight:600;}
 .header ul.sign-in li {float: right;margin:0 0 0 4px;}
-.header ul.sign-in li:not(:last-child):before {content: "/";float:left;margin:14px 0 0 0;color:#006bc7;}
+.header ul.sign-in li:not(:last-child):before {content: "/";float:left;margin:14px 0 0 0;color:#525a65;}
 .header ul.sign-in li a{margin:14px 0px 0px 14px;}
 
 .header-container {border-bottom: 1px solid #ccc;}
-.body .content {width: 70%;float: left;}
+.body .content {width: 70%;float: left;margin-bottom: 100px;}
+.body .content-full {width: 100%;float: left;margin-bottom: 100px;}
 .body aside {float: left;background: #000;width: 30%;height: 300px;}
 footer {border-top: 1px solid #ccc;position: fixed;bottom: 0;width: 100%;background:#ffffff;}
 .footer {width: 70%;margin: 0 auto;}
