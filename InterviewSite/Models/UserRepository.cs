@@ -141,7 +141,7 @@ namespace InterviewSite.Models
             return usr;
         }
 
-        public void ResetObject()
+        private void ResetObject()
         {
             ds = null;
             db = null;

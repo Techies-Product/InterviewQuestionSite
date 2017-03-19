@@ -20,6 +20,10 @@
                 else
                 {
                     <ul class="log-off">
+                        @if (Session["UserType"].ToString().ToUpper() == "A")
+                        {
+                            @Html.Raw(InterviewSite.Models.CommonFunctions.GetAdminMenu())
+                        }
                         <li>Hello !<a href="members/@Session["User_Unique_Name"]">@Session["FirstName"] @Session["LastName"]</a></li>
                         <li><a href="Logout">Logout</a></li>
                     </ul>

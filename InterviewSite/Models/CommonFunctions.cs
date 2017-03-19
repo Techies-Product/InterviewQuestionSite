@@ -37,5 +37,14 @@ namespace InterviewSite.Models
             des.IV = new byte[des.BlockSize / 8];
             return des;
         }
+        public static string GetAdminMenu()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<li><select id='AdminMenu'>");
+            sb.Append("<option>--Select Admin Item--</option>");
+            sb.Append("<option data-href='/tags'>Manage Tags</option>");
+            sb.Append("</select></li>");
+            return sb.ToString();
+        }
     }
 }

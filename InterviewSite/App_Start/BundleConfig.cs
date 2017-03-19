@@ -28,6 +28,9 @@ namespace InterviewSite.App_Start
             bundles.Add(new StyleBundle("~/css/create_question")
                 .Include(
                 "~/Content/Site.css"));
+            bundles.Add(new StyleBundle("~/css/tags")
+                .Include(
+                "~/Content/Site.css"));
         }
         public static void JsBundling(BundleCollection bundles)
         {
@@ -54,6 +57,12 @@ namespace InterviewSite.App_Start
                 "~/Scripts/common.js",
                 "~/Scripts/tinymce/jquery.tinymce.js",
                 "~/Scripts/create_question.js"));
+
+            bundles.Add(new ScriptBundle("~/js/tags")
+                .Include(
+                "~/Scripts/jquery-1.10.2.js",
+                "~/Scripts/common.js",
+                "~/Scripts/tags.js"));
 
         }
         

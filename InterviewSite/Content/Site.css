@@ -2,7 +2,9 @@
 h1 {font-size: 18px;}
 h2 {font-size: 16px;}
 h3 {font-size: 14px;}
-.header a {text-decoration: none;}
+table {border-collapse: collapse;}
+th, td {padding: 0;}
+a {text-decoration: none;}
 .error{color:#b50000;font-size: 14px;margin-left: 5px;}
 .interview-label {color: #666666;display: inline-block;font-size: 16px;}
 .interview-input {height: 18px;width: 60%;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;min-width: 50px;background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px;margin-bottom: 2px;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-shadow: inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
@@ -34,6 +36,8 @@ h3 {font-size: 14px;}
 .header ul.sign-in li {float: right;margin:0 0 0 4px;}
 .header ul.sign-in li:not(:last-child):before {content: "/";float:left;margin:14px 0 0 0;color:#525a65;}
 .header ul.sign-in li a{margin:14px 0px 0px 14px;}
+ul.log-off{float: right;list-style: none;}
+ul.log-off li{float: left;padding: 10px 0 0 10px;}
 
 .header-container {border-bottom: 1px solid #ccc;}
 .body .content {width: 70%;float: left;margin-bottom: 100px;}
@@ -48,6 +52,17 @@ footer {border-top: 1px solid #ccc;position: fixed;bottom: 0;width: 100%;backgro
 .footer ul.footer-menu li:not(:first-child):before {content: "|";float:left;margin:13px 0 0;color:#8f8f8f;padding-left:3px;}
 .footer ul.footer-menu li a{margin:14px 0px 0px 14px;}
 .footer p {float:right;margin-top:14px;color:#8f8f8f;padding-bottom:14px;}
+
+/*interview-table*/
+.interview-table{width:100%;}
+.interview-table th{text-align:left;padding:5px 10px;border:1px solid #525a65;margin:0;background-color:#525a65;color:#fff;text-align:center;}
+.interview-table td{text-align:left;padding:5px 10px;border:1px solid #525a65;margin:0;background-color:#f3f3f3;color:#4c4c4c;}
+
+/*Pagination Style*/
+.pagination {display: inline-block;margin:0 auto;}
+.pagination a {color: black;float: left;padding: 8px 16px;text-decoration: none;}
+.pagination a.active {background-color: #4CAF50;color: white;border-radius: 5px;}
+.pagination a:hover:not(.active) {background-color: #ddd;border-radius: 5px;}
 
 @media(max-width:768px) {
     aside {display:none;}

@@ -95,5 +95,14 @@ namespace InterviewSite.Controllers
                 Response.Cookies.Add(httpPwdCookie);
             }
         }
+
+        [Route("Logout")]
+        public ActionResult LogOut()
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Cookies["pwd"].Expires = Response.Cookies["uid"].Expires = DateTime.Now.AddDays(-1);
+            return Redirect(Request.UrlReferrer.AbsoluteUri);
+        }
     }
 }

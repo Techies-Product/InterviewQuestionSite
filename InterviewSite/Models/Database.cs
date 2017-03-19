@@ -18,6 +18,33 @@ namespace InterviewSite.Models
             };
         }
 
+
+        public void RunProcedure(string ProcedureName, SqlParameter[] param)
+        {
+            SqlConnection con = Sql_Connection;
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(ProcedureName, con)
+                {
+                    CommandType = CommandType.StoredProcedure,
+                };
+                if (!object.Equals(param, null))
+                {
+                    cmd.Parameters.AddRange(param);
+                }
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public void RunProcedure(string ProcedureName, SqlParameter[] param, out DataSet ds)
         {
             SqlConnection con = Sql_Connection;
@@ -45,6 +72,7 @@ namespace InterviewSite.Models
                 con.Close();
             }
         }
+
 
         internal SqlParameter MakeInParameter(string ParameterName, SqlDbType DbType, int ParameterSize, object value)
         {

@@ -1,0 +1,43 @@
+﻿@model InterviewSite.Models.Tag
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutFullPage.cshtml";
+}
+@using (Html.BeginForm(null,null,FormMethod.Post,htmlAttributes:new {@onsubmit="return CheckFormSubmit()" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="interview-inputs">
+            <div class="label-container">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "interview-label" })
+            </div>
+            <div class="editor-container">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "interview-input" } })
+                <div class="error" id="errorTagName" style="display:block;">@ViewBag.ErrorTagName</div>
+            </div>
+        </div>
+        <div class="interview-inputs">
+            <div class="label-container">
+                @Html.LabelFor(model => model.IsCompany, htmlAttributes: new { @class = "interview-label" })
+            </div>
+            <div class="editor-container">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsCompany)
+                    <input type="hidden" id="hddIsCompany" name="hddIsCompany" value="false" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="interview-inputs">
+        <input id="btnAddTag" type="submit" value="Add Tag" class="interview-btn" style="margin-left:20%;" />
+    </div>
+}
+@section Styles{
+    @Styles.Render("~/css/tags")
+}
+
+@section Scripts{
+    @Scripts.Render("~/js/tags")
+}
