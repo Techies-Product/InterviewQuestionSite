@@ -67,7 +67,7 @@
                     start = ViewBag.SelectedPage - (5 - remaining);
                 }
             }
-            for (int i = 0; i < 5 && i < totalCounter; i++)
+            for (int i = 0; i < 5 && (i+start-1) < totalCounter; i++)
             {
                 if (ViewBag.SelectedPage == i + start)
                 {
