@@ -46,24 +46,37 @@
 </table>
 <div style="text-align:center;margin-top:10px;">
     <div class="pagination">
-        <a href="#">&laquo;</a>
+        <a href="/tags/index/1">&laquo;</a>
         @{
             decimal tagListSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["TagListPageSize"].ToString());
             decimal total = Model.Select(r => r.Total).First();
             int totalCounter = Convert.ToInt32(Math.Ceiling(total / tagListSize));
-            for (int i = 0; i < totalCounter; i++)
+            int start=1;
+            if (totalCounter > 5)
             {
-                if (ViewBag.SelectedPage == i + 1)
+                if (ViewBag.SelectedPage > 3 && ViewBag.SelectedPage + 2 <= totalCounter)
                 {
-                    <a href="/tags/index/@(i + 1)" class="active">@(i + 1)</a>
+                    start = ViewBag.SelectedPage - 2;
+                }
+                else if(ViewBag.SelectedPage > 3)
+                {
+                    int remaining = (totalCounter - ViewBag.SelectedPage)+1;
+                    start = ViewBag.SelectedPage - (5 - remaining);
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                if (ViewBag.SelectedPage == i + start)
+                {
+                    <a href="/tags/index/@(i + start)" class="active">@(i + start)</a>
                 }
                 else
                 {
-                    <a href="/tags/index/@(i + 1)">@(i + 1)</a>
+                    <a href="/tags/index/@(i + start)">@(i + start)</a>
                 }
             }
         }
-        <a href="#">&raquo;</a>
+        <a href="/tags/index/@totalCounter">&raquo;</a>
     </div>
 </div>
 @section Styles{
