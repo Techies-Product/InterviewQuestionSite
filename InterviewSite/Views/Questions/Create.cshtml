@@ -33,7 +33,9 @@
                 @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <div class="interview-inputs">
+            @ViewBag.Message
+        </div>
         <div class="interview-inputs">
                 <input id="btnRegister" type="submit" value="Submit" class="interview-btn" style="margin-left:20%;" />
         </div>

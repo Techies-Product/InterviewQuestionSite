@@ -10,5 +10,6 @@ namespace InterviewSite.Models
     {
         bool Save(int id, string Name, int CompanyOrCategoryId, bool IsCompany);
         IEnumerable<TagList> GetTags(int PageNumber,int PageSize);
+        List<string> SearchTags(string qry);
     }
 }

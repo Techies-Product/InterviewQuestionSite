@@ -41,7 +41,7 @@ function deferCreateQuestionScriptLoad() {
                 theme_advanced_resizing: false,
 
                 // Example content CSS (should be your site CSS)
-                content_css: "/Scripts/tinymce/css/content.css",
+                //content_css: "/Scripts/tinymce/css/content.css",
                 convert_urls: false,
 
                 // Drop lists for link/image/media/template dialogs
@@ -53,4 +53,23 @@ function deferCreateQuestionScriptLoad() {
             });
         });
     })();
+    jQuery("#Tags").textext({
+        plugins: 'tags autocomplete filter ajax',
+        autocomplete: {
+            dropdownMaxHeight: 'auto'
+        },
+        ajax: {
+            url: '/Tags/SearchTags',
+            dataType: 'json',
+            typeDelay: 0.5,
+            loadingDelay: 0.5,
+            cacheResults: false,
+        }
+    }).bind('keyup', function (e) {
+        if (e.keyCode == 188) {
+            var space_comma_enter = jQuery(this).val().replace(/\s/g, "").replace(',', '');
+            jQuery(this).textext()[0].tags().addTags([space_comma_enter]);
+            jQuery(this).val('');
+        }
+    });
 }

@@ -9,7 +9,7 @@ namespace InterviewSite.Models
 {
     public class Question
     {
-        public int QuestionId { get; set; }
+        public string QuestionId { get; set; }
         public string QuestionTitle { get; set; }
 
         [AllowHtml]

@@ -77,5 +77,27 @@ namespace InterviewSite.Models
             ds = null;
             db = null;
         }
+
+        public List<string> SearchTags(string qry)
+        {
+            db = new Database();
+            ds = new DataSet();
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = db.MakeInParameter("@qry", SqlDbType.VarChar, 100, qry);
+            try
+            {
+                db.RunProcedure("SearchTags", param, out ds);
+                return ds.Tables[0].AsEnumerable().Select(r => r.Field<string>("Name")).ToList();
+            }
+            catch (Exception exp)
+            {
+
+            }
+            finally
+            {
+                ResetObject();
+            }
+            return null;
+        }
     }
 }

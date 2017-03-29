@@ -27,7 +27,15 @@ namespace InterviewSite.App_Start
                 "~/Content/home_page.css"));
             bundles.Add(new StyleBundle("~/css/create_question")
                 .Include(
-                "~/Content/Site.css"));
+                "~/Content/interview_tags_plugin/css/textext.core.css",
+                "~/Content/interview_tags_plugin/css/textext.plugin.tags.css",
+                "~/Content/interview_tags_plugin/css/textext.plugin.autocomplete.css",
+                "~/Content/interview_tags_plugin/css/textext.plugin.focus.css",
+                "~/Content/interview_tags_plugin/css/textext.plugin.prompt.css",
+                "~/Content/interview_tags_plugin/css/textext.plugin.arrow.css",
+                "~/Content/Site.css",
+                "~/Content/create_question.css"
+                ));
             bundles.Add(new StyleBundle("~/css/tags")
                 .Include(
                 "~/Content/Site.css"));
@@ -56,6 +64,15 @@ namespace InterviewSite.App_Start
                 "~/Scripts/jquery-1.10.2.js",
                 "~/Scripts/common.js",
                 "~/Scripts/tinymce/jquery.tinymce.js",
+                "~/Content/interview_tags_plugin/js/textext.core.js",
+                "~/Content/interview_tags_plugin/js/textext.plugin.tags.js",
+                "~/Content/interview_tags_plugin/js/textext.plugin.autocomplete.js",
+                "~/Content/interview_tags_plugin/js/textext.plugin.suggestions.js",
+                "~/Content/interview_tags_plugin/js/textext.plugin.filter.js",
+                "~/Content/interview_tags_plugin/js/textext.plugin.focus.js",
+                "~/Content/interview_tags_plugin/js/textext.plugin.prompt.js",
+                "~/Content/interview_tags_plugin/js/textext.plugin.ajax.js",
+                "~/Content/interview_tags_plugin/js/textext.plugin.arrow.js",
                 "~/Scripts/create_question.js"));
 
             bundles.Add(new ScriptBundle("~/js/tags")
@@ -63,8 +80,7 @@ namespace InterviewSite.App_Start
                 "~/Scripts/jquery-1.10.2.js",
                 "~/Scripts/common.js",
                 "~/Scripts/tags.js"));
-
         }
-        
+
     }
 }

@@ -9,7 +9,6 @@ using System.Web.Mvc;
 
 namespace InterviewSite.Controllers
 {
-    [IsAdmin]
     public class TagsController : Controller
     {
         ITagRepository iTagRepository;
@@ -28,11 +27,13 @@ namespace InterviewSite.Controllers
             ViewBag.SelectedPage = id;
             return View(tagList);
         }
+        [IsAdmin]
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [IsAdmin]
         public ActionResult Create(string Name, bool hddIsCompany)
         {
             if (string.IsNullOrEmpty(Name))
@@ -42,6 +43,11 @@ namespace InterviewSite.Controllers
             }
             iTagRepository.Save(0, Name,0, hddIsCompany);
             return View();
+        }
+        [HttpGet]
+        public JsonResult SearchTags(string q)
+        {
+            return Json(iTagRepository.SearchTags(q),JsonRequestBehavior.AllowGet);
         }
     }
 }
