@@ -1,6 +1,7 @@
 ﻿using InterviewSite.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -40,6 +41,12 @@ namespace InterviewSite.Controllers
                 : "Error while submitting question";
             ModelState.Clear();
             return View(q);
+        }
+        public ActionResult Recent(string Id="1")
+        {
+            ViewBag.SelectedPage = Convert.ToInt32(Id);
+            IQuestionRepository questionRepository = new QuestionRepository();
+            return View(questionRepository.GetRecentQuestions(PageNumber: Convert.ToInt32(Id), PageSize: Convert.ToInt32(ConfigurationManager.AppSettings["RecentQuestionListPageSize"])));
         }
     }
 }

@@ -459,6 +459,7 @@
     <Content Include="Views\Shared\_LayoutFullPage.cshtml" />
     <Content Include="Views\Tags\Create.cshtml" />
     <Content Include="Views\Tags\Index.cshtml" />
+    <Content Include="Views\Questions\Recent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

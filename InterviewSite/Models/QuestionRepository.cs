@@ -46,14 +46,17 @@ namespace InterviewSite.Models
             return returnVal;
         }
 
-        public List<RecentQuestion> GetRecentQuestions()
+        public List<RecentQuestion> GetRecentQuestions(int PageNumber=1, int PageSize=30)
         {
             db = new Database();
             ds = new DataSet();
             List<RecentQuestion> lstQuestion = new List<RecentQuestion>();
             try
             {
-                db.RunProcedure("GetRecentQuestions", null, out ds);
+                SqlParameter[] param = new SqlParameter[2];
+                param[0] = db.MakeInParameter("@PageNumber", SqlDbType.Int, 4, PageNumber);
+                param[1] = db.MakeInParameter("@PageSize", SqlDbType.Int, 4, PageSize);
+                db.RunProcedure("GetRecentQuestions", param, out ds);
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
                     lstQuestion.Add(new RecentQuestion
@@ -62,6 +65,7 @@ namespace InterviewSite.Models
                         DateTimeShow = dr["DateTimeShow"].ToString(),
                         UserUniqueName = dr["User_Unique_Name"].ToString(),
                         AuthorName = dr["Name"].ToString(),
+                        Total = Convert.ToInt32(dr["Total"].ToString())
                     });
                 }
             }

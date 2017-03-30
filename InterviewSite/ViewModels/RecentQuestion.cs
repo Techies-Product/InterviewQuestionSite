@@ -11,5 +11,6 @@ namespace InterviewSite.ViewModels
         public string DateTimeShow { get; set; }
         public string AuthorName { get; set; }
         public string UserUniqueName { get; set; }
+        public int Total { get; set; }
     }
 }

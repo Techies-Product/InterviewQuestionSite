@@ -1,0 +1,71 @@
+﻿@model List<InterviewSite.ViewModels.RecentQuestion>
+
+@{
+    ViewBag.Title = "Recent";
+}
+
+<h2>Recent Questions</h2>
+<ul class="recent-questions">
+    @foreach (var item in Model)
+    {
+        <li>
+            <div class="question">
+                <a href="#" class="title">@item.QuestionTitle</a>
+                <p class="question-desc">
+                    <a href="javascript:void(0)" class="author">@item.AuthorName</a>
+                    <a href="javascript:void(0)" class="date">@item.DateTimeShow</a>
+                </p>
+            </div>
+        </li>
+    }
+</ul>
+
+<div style="text-align:center;margin-top:10px;">
+    <div class="pagination">
+        @if (ViewBag.SelectedPage != 1)
+        {
+            <a href="/tags/index/1">&laquo;</a>
+        }
+        @{
+            decimal tagListSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["RecentQuestionListPageSize"].ToString());
+            decimal total = Model.Select(r => r.Total).First();
+            int totalCounter = Convert.ToInt32(Math.Ceiling(total / tagListSize));
+            int start = 1;
+            if (totalCounter > 5)
+            {
+                if (ViewBag.SelectedPage > 3 && ViewBag.SelectedPage + 2 <= totalCounter)
+                {
+                    start = ViewBag.SelectedPage - 2;
+                }
+                else if (ViewBag.SelectedPage > 3)
+                {
+                    int remaining = (totalCounter - ViewBag.SelectedPage) + 1;
+                    start = ViewBag.SelectedPage - (5 - remaining);
+                }
+            }
+            for (int i = 0; i < 5 && (i + start - 1) < totalCounter; i++)
+            {
+                if (ViewBag.SelectedPage == i + start)
+                {
+                    <a href="/tags/index/@(i + start)" class="active">@(i + start)</a>
+                }
+                else
+                {
+                    <a href="/tags/index/@(i + start)">@(i + start)</a>
+                }
+            }
+        }
+        @if (ViewBag.SelectedPage != totalCounter)
+        {
+            <a href="/Question/Recent/@totalCounter">&raquo;</a>
+        }
+    </div>
+</div>
+
+@section Styles{
+    @Styles.Render("~/css/home")
+}
+
+@section Scripts{
+    @Scripts.Render("~/js/home")
+}

@@ -10,6 +10,6 @@ namespace InterviewSite.Models
     public interface IQuestionRepository
     {
         bool CreateQuestion(Question q);
-        List<RecentQuestion> GetRecentQuestions();
+        List<RecentQuestion> GetRecentQuestions(int PageNumber=1, int PageSize=30);
     }
 }
