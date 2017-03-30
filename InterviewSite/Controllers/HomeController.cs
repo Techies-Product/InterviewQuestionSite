@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterviewSite.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace InterviewSite.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            IQuestionRepository questionRepository = new QuestionRepository();
+            return View(questionRepository.GetRecentQuestions());
         }
     }
 }

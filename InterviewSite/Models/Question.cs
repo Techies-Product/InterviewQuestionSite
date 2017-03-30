@@ -23,5 +23,6 @@ namespace InterviewSite.Models
         public bool IsDeleted { get; set; }
         public string Remark { get; set; }
         public string Tags { get; set; }
+        public string UniqueQuestionName { get; set; }
     }
 }
