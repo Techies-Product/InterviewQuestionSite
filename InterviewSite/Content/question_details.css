@@ -1,0 +1,6 @@
+﻿.question-header{}
+.question-title {margin: 0 5px;font-size:22px;padding:5px;border-bottom:1px solid #e0e0e0;}
+.question-detail {padding:5px;}
+.question-info{margin: 0 5px;font-size:14px;padding:5px;border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;}
+.author{color:#666;margin-right:20px;}
+.created-date{color:#444;margin-right:20px;}

@@ -25,6 +25,10 @@ namespace InterviewSite.App_Start
                 .Include(
                 "~/Content/Site.css",
                 "~/Content/home_page.css"));
+            bundles.Add(new StyleBundle("~/css/question-details")
+                .Include(
+                "~/Content/Site.css",
+                "~/Content/question_details.css"));
             bundles.Add(new StyleBundle("~/css/create_question")
                 .Include(
                 "~/Content/interview_tags_plugin/css/textext.core.css",

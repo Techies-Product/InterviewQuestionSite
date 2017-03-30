@@ -11,5 +11,6 @@ namespace InterviewSite.Models
     {
         bool CreateQuestion(Question q);
         List<RecentQuestion> GetRecentQuestions(int PageNumber=1, int PageSize=30);
+        QuestionDetail GetQuestionByUniqueName(string QuestionUniqueName);
     }
 }

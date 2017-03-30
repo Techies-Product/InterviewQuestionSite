@@ -46,7 +46,7 @@ namespace InterviewSite.Models
             return returnVal;
         }
 
-        public List<RecentQuestion> GetRecentQuestions(int PageNumber=1, int PageSize=30)
+        public List<RecentQuestion> GetRecentQuestions(int PageNumber = 1, int PageSize = 30)
         {
             db = new Database();
             ds = new DataSet();
@@ -65,7 +65,8 @@ namespace InterviewSite.Models
                         DateTimeShow = dr["DateTimeShow"].ToString(),
                         UserUniqueName = dr["User_Unique_Name"].ToString(),
                         AuthorName = dr["Name"].ToString(),
-                        Total = Convert.ToInt32(dr["Total"].ToString())
+                        Total = Convert.ToInt32(dr["Total"].ToString()),
+                        UniqueQuestionName=dr["UniqueQuestionName"].ToString()
                     });
                 }
             }
@@ -78,6 +79,51 @@ namespace InterviewSite.Models
                 ResetObject();
             }
             return lstQuestion;
+        }
+
+        public QuestionDetail GetQuestionByUniqueName(string QuestionUniqueName)
+        {
+            db = new Database();
+            ds = new DataSet();
+            QuestionDetail questionDetail = new QuestionDetail();
+            try
+            {
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = db.MakeInParameter("@UniqueQuestionName", SqlDbType.VarChar, 300, QuestionUniqueName);
+                db.RunProcedure("GetQuestionByUniqueName", param, out ds);
+                if (!object.Equals(ds, null))
+                {
+                    if (!object.Equals(ds.Tables[0], null))
+                    {
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            DataRow dr = ds.Tables[0].Rows[0];
+                            questionDetail.QuestionId = dr["QuestionId"].ToString();
+                            questionDetail.QuestionTitle = dr["QuestionTitle"].ToString();
+                            questionDetail.QuestionDetail = dr["QuestionDetail"].ToString();
+                            questionDetail.CreatedDate = Convert.ToDateTime(dr["CreatedDate"].ToString());
+                            questionDetail.ModifiedDate = Convert.ToDateTime(dr["ModifiedDate"].ToString());
+                            questionDetail.UserId = dr["UserId"].ToString();
+                            questionDetail.Tags = dr["Tags"].ToString();
+                            questionDetail.TotalViews = Convert.ToInt32(dr["TotalViews"].ToString());
+                            questionDetail.TotalLikes = Convert.ToInt32(dr["TotalLikes"].ToString());
+                            questionDetail.UniqueQuestionName = dr["UniqueQuestionName"].ToString();
+                            questionDetail.FullName = dr["FullName"].ToString();
+                            questionDetail.Photo = dr["Photo"].ToString();
+                            questionDetail.User_Unique_Name = dr["User_Unique_Name"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception exp)
+            {
+
+            }
+            finally
+            {
+                ResetObject();
+            }
+            return questionDetail;
         }
 
         private void ResetObject()

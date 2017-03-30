@@ -1,0 +1,25 @@
+﻿@model InterviewSite.ViewModels.QuestionDetail
+
+@{
+    ViewBag.Title = Model.QuestionTitle;
+}
+
+<div>
+    <div class="question-header">
+        <h1 class="question-title">@Model.QuestionTitle</h1>
+    </div>
+    <div class="question-detail">
+        @Html.Raw(Model.QuestionDetail)
+    </div>
+    <div class="question-info">
+        <a href="javascript:void(0)" class="author">@Model.FullName</a>
+        <span class="created-date">@Model.CreatedDate.ToString("MMM dd, yyyy")</span>
+    </div>
+</div>
+@section Styles{
+    @Styles.Render("~/css/question-details")
+}
+
+@section Scripts{
+    @Scripts.Render("~/js/home")
+}

@@ -1,4 +1,5 @@
 ﻿using InterviewSite.Models;
+using InterviewSite.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -44,9 +45,22 @@ namespace InterviewSite.Controllers
         }
         public ActionResult Recent(string Id="1")
         {
-            ViewBag.SelectedPage = Convert.ToInt32(Id);
-            IQuestionRepository questionRepository = new QuestionRepository();
-            return View(questionRepository.GetRecentQuestions(PageNumber: Convert.ToInt32(Id), PageSize: Convert.ToInt32(ConfigurationManager.AppSettings["RecentQuestionListPageSize"])));
+            try
+            {
+                ViewBag.SelectedPage = Convert.ToInt32(Id);
+                questionRepository = new QuestionRepository();
+                return View(questionRepository.GetRecentQuestions(PageNumber: Convert.ToInt32(Id), PageSize: Convert.ToInt32(ConfigurationManager.AppSettings["RecentQuestionListPageSize"])));
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("Recent", "Questions");
+            }
+        }
+        public ActionResult Detail(string Id)
+        {
+            questionRepository = new QuestionRepository();
+            QuestionDetail questionDetail = questionRepository.GetQuestionByUniqueName(Id);
+            return View(questionDetail);
         }
     }
 }

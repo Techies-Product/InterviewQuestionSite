@@ -24,5 +24,7 @@ namespace InterviewSite.Models
         public string Remark { get; set; }
         public string Tags { get; set; }
         public string UniqueQuestionName { get; set; }
+        public int TotalViews { get; set; }
+        public int TotalLikes { get; set; }
     }
 }
