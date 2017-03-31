@@ -58,7 +58,6 @@ namespace InterviewSite.Controllers
         }
         public ActionResult Detail(string Id)
         {
-            questionRepository = new QuestionRepository();
             QuestionDetail questionDetail = questionRepository.GetQuestionByUniqueName(Id);
             return View(questionDetail);
         }

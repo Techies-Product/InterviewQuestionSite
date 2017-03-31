@@ -10,11 +10,27 @@
     </div>
     <div class="question-detail">
         @Html.Raw(Model.QuestionDetail)
+
+        <div class="social-share">
+            <ul class="social-share-list">
+                <li><a href=""></a></li>
+            </ul>
+        </div>
+
+        <div class="tags-container">
+            <ul class="tag-list">
+                @foreach (var item in Model.Tags.Split(','))
+                {
+                    <li>@item</li>
+                }
+            </ul>
+        </div>
     </div>
     <div class="question-info">
         <a href="javascript:void(0)" class="author">@Model.FullName</a>
         <span class="created-date">@Model.CreatedDate.ToString("MMM dd, yyyy")</span>
     </div>
+
 </div>
 @section Styles{
     @Styles.Render("~/css/question-details")

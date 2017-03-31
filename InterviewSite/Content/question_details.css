@@ -4,3 +4,5 @@
 .question-info{margin: 0 5px;font-size:14px;padding:5px;border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;}
 .author{color:#666;margin-right:20px;}
 .created-date{color:#444;margin-right:20px;}
+.tags-container .tag-list{list-style:none;margin:20px 0 10px;word-wrap:break-word;}
+.tags-container .tag-list li{display: inline;padding: 5px 10px;background: #525a65;color: #fff;border-radius: 5px;font-size:13px;margin-right:5px;line-height: 35px;}

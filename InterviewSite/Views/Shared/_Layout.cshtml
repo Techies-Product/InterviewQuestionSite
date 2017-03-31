@@ -7,15 +7,36 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
+    @if (object.Equals(Session["UserId"], null))
+    {
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '239956799810306',
+                    cookie: true,
+                    xfbml: true,
+                    version: 'v2.8'
+                });
+                FB.AppEvents.logPageView();
+            };
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+    }
     <div class='main-container'>
         <div class='header-container'>
-            <div class='header'> 
+            <div class='header'>
                 @if (object.Equals(Session["UserId"], null))
                 {
-                <ul class="sign-in"> 
-                    <li><a href="/Registration">Sign up</a></li> 
-                    <li><a href="/Login">Sign in</a></li> 
-                </ul>
+                    <ul class="sign-in">
+                        <li><a href="/Registration">Sign up</a></li>
+                        <li><a href="/Login">Sign in</a></li>
+                    </ul>
                 }
                 else
                 {
@@ -38,10 +59,11 @@
                     </ul>
                 </div>
             </div>
-            </div>
+        </div>
         <div class='body'>
             <div class='content'>
                 @RenderBody()
+                
             </div>
             <aside></aside>
         </div>
@@ -61,6 +83,16 @@
         </footer>
 
     </div>
-   @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
+    @if (object.Equals(Session["UserId"], null))
+    {
+        <input type="hidden" id="hdnSocialLoginType" />
+        <input type="hidden" id="HiddenFieldUserId" />
+        <input type="hidden" id="HiddenFieldEmail" />
+        <input type="hidden" id="HiddenFieldFirstName" />
+        <input type="hidden" id="HiddenFieldLastName" />
+        <input type="hidden" id="HiddenFieldType" />
+        <input type="button" id="BtnLoginSocial" style="display:none;" />
+    }
 </body>
 </html>

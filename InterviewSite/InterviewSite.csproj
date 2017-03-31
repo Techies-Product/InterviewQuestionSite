@@ -109,6 +109,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\create_question.css" />
     <Content Include="Content\home_page.css" />
+    <Content Include="Content\Images\c-sprite.png" />
     <Content Include="Content\interview_tags_plugin\css\arrow.png" />
     <Content Include="Content\interview_tags_plugin\css\close.png" />
     <Content Include="Content\interview_tags_plugin\css\textext.core.css" />
@@ -141,6 +142,7 @@
     <Content Include="Content\interview_tags_plugin\stylus\textext.plugin.prompt.styl" />
     <Content Include="Content\interview_tags_plugin\stylus\textext.plugin.tags.styl" />
     <Content Include="Content\interview_tags_plugin\stylus\_common.styl" />
+    <Content Include="Content\Images\psd622CCB154BDD1C60E80AE1D3C08EF9A834954E83115619A23^pimgpsh_fullsize_distr.psd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\create_question.js" />
