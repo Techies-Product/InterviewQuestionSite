@@ -16,3 +16,21 @@
 .social-share .social-share-list .whatsapp{background-position: -150px -42px;}
 .question-options ul{list-style:none;margin:0;padding:0;overflow:hidden}
 .question-options ul li{float:right;padding:0 10px 0 0;}
+
+/* Suman's added css in below section*/
+.answer-detail{
+    overflow:hidden;padding-bottom:25px;
+}
+.other-info {
+    margin: 0 5px;
+    font-size: 14px;
+    padding: 5px;
+}
+.other-info button {
+    padding: 5px;
+    background-color: #dcdcdc;
+    border: 1px solid #666;
+    color: #000;
+    text-decoration: none;
+    display:block;
+}

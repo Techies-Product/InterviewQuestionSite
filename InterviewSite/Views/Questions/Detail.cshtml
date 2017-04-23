@@ -62,12 +62,16 @@
             foreach (var item in @Model.Answers)
             {
                 <div class="answer-detail" data-AnswerId="@item.AnswerId">
-                    <div class="answer">
-                        @Html.Raw(item.AnswerDetail)
-                    </div>
-                    <div class="other-info">
-
-                    </div>
+                    <p>
+                        <div class="answer">
+                            @Html.Raw(item.AnswerDetail)
+                        </div>
+                        <div class="other-info">
+                            <span>@item.FullName</span>
+                            <span>@item.CreatedDate</span>
+                            <input class="button" value="Upvote" type="submit" />
+                        </div>
+                    </p>
                 </div>
             }
         }
