@@ -43,7 +43,7 @@ ul.log-off li{float: left;padding: 10px 0 0 10px;}
 .body .content {width: 70%;float: left;margin-bottom: 100px;}
 .body .content-full {width: 100%;float: left;margin-bottom: 100px;}
 .body aside {float: left;background: #000;width: 30%;height: 300px;}
-footer {border-top: 1px solid #ccc;position: fixed;bottom: 0;width: 100%;background:#ffffff;}
+footer {border-top: 1px solid #ccc;position: relative;bottom: 0;width: 100%;background:#ffffff;overflow: hidden;}
 .footer {width: 70%;margin: 0 auto;}
 .footer ul.footer-menu{list-style-type: none;margin: 0;padding: 0;overflow: hidden;width: 100%;height: 50px;display: inline;}
 .footer ul.footer-menu li {float: left;}

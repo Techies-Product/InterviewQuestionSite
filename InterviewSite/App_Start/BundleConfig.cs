@@ -84,6 +84,12 @@ namespace InterviewSite.App_Start
                 "~/Scripts/jquery-1.10.2.js",
                 "~/Scripts/common.js",
                 "~/Scripts/tags.js"));
+            bundles.Add(new ScriptBundle("~/js/question_details")
+                .Include(
+                "~/Scripts/jquery-1.10.2.js",
+                "~/Scripts/common.js",
+                "~/Scripts/tinymce/jquery.tinymce.js",
+                "~/Scripts/question_details.js"));
         }
 
     }

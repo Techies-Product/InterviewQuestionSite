@@ -1,25 +1,27 @@
-﻿/// <reference path="jquery-1.10.2.js" />
+﻿var isBusy = false;
 document.addEventListener('DOMContentLoaded', function () {
-    deferCreateQuestionLayoutLoading();
+    deferQuestionLoading();
 });
-function deferCreateQuestionLayoutLoading() {
+function deferQuestionLoading() {
     if (window.jQuery) {
         jQuery = jQuery.noConflict();
-        deferCreateQuestionScriptLoad();
+        deferQuestionLoaded();
     }
     else {
-        setTimeout(function () { deferCreateQuestionLayoutLoading() }, 100);
+        setTimeout(function () { deferQuestionLoading() }, 100);
     }
 }
-function deferCreateQuestionScriptLoad() {
+function deferQuestionLoaded() {
+    jQuery("#btnReply").click(function () {
+        jQuery("#ReplyContainer").toggle();
+    });
     (function () {
         jQuery(function () {
-            jQuery('#QuestionDetail').tinymce({
+            jQuery('#ReplyAnswer').tinymce({
                 // Location of TinyMCE script
                 script_url: '/Scripts/tinymce/tiny_mce.js',
                 theme: "advanced",
-
-                height: "400",
+                height: "300",
                 width: "100%",
                 verify_html: false,
                 plugins: "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave",
@@ -48,28 +50,42 @@ function deferCreateQuestionScriptLoad() {
                 template_external_list_url: "lists/template_list.js",
                 external_link_list_url: "lists/link_list.js",
                 external_image_list_url: "lists/image_list.js",
-                media_external_list_url: "lists/media_list.js"
+                media_external_list_url: "lists/media_list.js",
 
             });
         });
     })();
-    jQuery("#Tags").textext({
-        plugins: 'tags autocomplete filter ajax',
-        autocomplete: {
-            dropdownMaxHeight: 'auto'
-        },
-        ajax: {
-            url: '/Tags/SearchTags',
+    jQuery("#btnSubmit").click(function () {
+        var answer = jQuery(tinymce.get("ReplyAnswer").getBody()).text().trim();
+        if (answer.length === 0) { return false; }
+        if (isBusy) { return false;}
+        jQuery.ajax({
+            url: '/answers/SubmitAnswer',
+            type: 'post',
+            data: JSON.stringify({ 'answer': tinymce.get("ReplyAnswer").getContent(), 'qid': jQuery("#hddQuestionId").val() }),
             dataType: 'json',
-            typeDelay: 0.5,
-            loadingDelay: 0.5,
-            cacheResults: false,
-        }
-    }).bind('keyup', function (e) {
-        if (e.keyCode == 188) {
-            var space_comma_enter = jQuery(this).val().replace(/\s/g, "").replace(',', '');
-            jQuery(this).textext()[0].tags().addTags([space_comma_enter]);
-            jQuery(this).val('');
-        }   
+            contentType: 'application/json',
+            beforeSend: function () {
+                isBusy = true;
+            },
+            success: function (data) {
+                if (data == "Login") {
+                    alert("Please Login First.");
+                }
+                else if (data == false) {
+                    alert("Something went wrong.");
+                }
+                else {
+                    alert("Successfully Submitted");
+                    jQuery("#ReplyContainer").hide();
+                    tinymce.get("ReplyAnswer").setContent("");
+                }
+            },
+            error: function (err) {
+            },
+            complete: function () {
+                isBusy = false;
+            }
+        });
     });
 }

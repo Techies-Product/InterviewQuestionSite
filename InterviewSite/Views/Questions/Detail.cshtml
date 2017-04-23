@@ -10,32 +10,73 @@
     </div>
     <div class="question-detail">
         @Html.Raw(Model.QuestionDetail)
-
-        <div class="social-share">
-            <ul class="social-share-list">
-                <li><a href=""></a></li>
-            </ul>
-        </div>
-
+        <input type="hidden" id="hddQuestionId" value="@Model.QuestionId" />
         <div class="tags-container">
             <ul class="tag-list">
-                @foreach (var item in Model.Tags.Split(','))
+                @if (!object.Equals(Model.Tags, null))
                 {
-                    <li>@item</li>
+                    if (Model.Tags.Length > 0)
+                    {
+                        foreach (var item in Model.Tags.Split(','))
+                        {
+                            <li>@item</li>
+                        }
+                    }
                 }
             </ul>
         </div>
+        <div class="social-share">
+            <ul class="social-share-list">
+                <li><a target="_blank" href="https://www.facebook.com/sharer.php?u=" class="fb"></a></li>
+                <li><a target="_blank" href="https://twitter.com/intent/tweet?&via=sourabh_somani" class="twitter"></a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=" class="linkedin"></a></li>
+                <li><a target="_blank" href="https://plus.google.com/share?url=" class="g-plus"></a></li>
+                <li><a target="_blank" href="whatsapp://send?text=sourabhsomani" class="whatsapp"></a></li>
+            </ul>
+
+        </div>
+
     </div>
     <div class="question-info">
         <a href="javascript:void(0)" class="author">@Model.FullName</a>
         <span class="created-date">@Model.CreatedDate.ToString("MMM dd, yyyy")</span>
     </div>
+    <div class="question-options">
+        <ul class="question-option-list">
+            <li><a href="javascript:void(0)" id="btnReply">Reply</a></li>
+        </ul>
+    </div>
+    <div id="ReplyContainer" class="reply-container" style="display:none;margin-bottom:25px;">
+        <div class="interview-inputs">
+            <div class="editor-container">
+                <textarea id="ReplyAnswer" name="ReplyAnswer"></textarea>
+            </div>
+        </div>
+        <div class="interview-inputs">
+            <input id="btnSubmit" type="button" value="Submit" class="interview-btn" />
+        </div>
+    </div>
+    <div class="answer-list">
+        @if (!object.Equals(Model.Answers, null))
+        {
+            foreach (var item in @Model.Answers)
+            {
+                <div class="answer-detail" data-AnswerId="@item.AnswerId">
+                    <div class="answer">
+                        @Html.Raw(item.AnswerDetail)
+                    </div>
+                    <div class="other-info">
 
+                    </div>
+                </div>
+            }
+        }
+    </div>
 </div>
 @section Styles{
     @Styles.Render("~/css/question-details")
 }
 
 @section Scripts{
-    @Scripts.Render("~/js/home")
+    @Scripts.Render("~/js/question_details")
 }

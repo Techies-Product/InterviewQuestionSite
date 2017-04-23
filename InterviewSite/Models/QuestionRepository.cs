@@ -66,7 +66,7 @@ namespace InterviewSite.Models
                         UserUniqueName = dr["User_Unique_Name"].ToString(),
                         AuthorName = dr["Name"].ToString(),
                         Total = Convert.ToInt32(dr["Total"].ToString()),
-                        UniqueQuestionName=dr["UniqueQuestionName"].ToString()
+                        UniqueQuestionName = dr["UniqueQuestionName"].ToString()
                     });
                 }
             }
@@ -111,6 +111,28 @@ namespace InterviewSite.Models
                             questionDetail.FullName = dr["FullName"].ToString();
                             questionDetail.Photo = dr["Photo"].ToString();
                             questionDetail.User_Unique_Name = dr["User_Unique_Name"].ToString();
+                        }
+                    }
+                    if (!object.Equals(ds.Tables[1], null))
+                    {
+                        if (ds.Tables[1].Rows.Count > 0)
+                        {
+                            List<AnswerDetail> answerDetail = new List<AnswerDetail>();
+                            answerDetail = (from DataRow dr in ds.Tables[1].Rows
+                                            select new AnswerDetail
+                                            {
+                                                AnswerId = dr["AnswerId"].ToString(),
+                                                AnswerDetail = dr["AnswerDetail"].ToString(),
+                                                CreatedDate = Convert.ToDateTime(dr["CreatedDate"]),
+                                                FullName = dr["FullName"].ToString(),
+                                                IsActive = Convert.ToBoolean(dr["IsActive"]),
+                                                IsDeleted = Convert.ToBoolean(dr["IsDeleted"]),
+                                                ModifiedDate = Convert.ToDateTime(dr["ModifiedDate"]),
+                                                Photo = dr["Photo"].ToString(),
+                                                UserId = dr["UserId"].ToString(),
+                                                User_Unique_Name = dr["User_Unique_Name"].ToString()
+                                            }).ToList();
+                            questionDetail.Answers = answerDetail;
                         }
                     }
                 }

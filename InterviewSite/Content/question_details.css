@@ -6,3 +6,13 @@
 .created-date{color:#444;margin-right:20px;}
 .tags-container .tag-list{list-style:none;margin:20px 0 10px;word-wrap:break-word;}
 .tags-container .tag-list li{display: inline;padding: 5px 10px;background: #525a65;color: #fff;border-radius: 5px;font-size:13px;margin-right:5px;line-height: 35px;}
+.social-share .social-share-list{list-style:none;margin:0;padding:0;overflow:hidden;}
+.social-share .social-share-list li{float:left;padding:0 6px 0 0;}
+.social-share .social-share-list li a{background-image: url(/content/images/c-sprite.png);width: 36px;height: 36px;display: inline-block;}
+.social-share .social-share-list .fb{background-position: 0px -42px;}
+.social-share .social-share-list .twitter{background-position: -38px -42px;}
+.social-share .social-share-list .linkedin{background-position: -75px -42px;}
+.social-share .social-share-list .g-plus{background-position: -114px -42px;}
+.social-share .social-share-list .whatsapp{background-position: -150px -42px;}
+.question-options ul{list-style:none;margin:0;padding:0;overflow:hidden}
+.question-options ul li{float:right;padding:0 10px 0 0;}

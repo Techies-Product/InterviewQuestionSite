@@ -24,7 +24,7 @@
     <div class="pagination">
         @if (ViewBag.SelectedPage != 1)
         {
-            <a href="/tags/index/1">&laquo;</a>
+            <a href="/questions/recent/1">&laquo;</a>
         }
         @{
             decimal tagListSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["RecentQuestionListPageSize"].ToString());
@@ -47,17 +47,17 @@
             {
                 if (ViewBag.SelectedPage == i + start)
                 {
-                    <a href="/tags/index/@(i + start)" class="active">@(i + start)</a>
+                    <a href="/questions/recent/@(i + start)" class="active">@(i + start)</a>
                 }
                 else
                 {
-                    <a href="/tags/index/@(i + start)">@(i + start)</a>
+                    <a href="/questions/recent/@(i + start)">@(i + start)</a>
                 }
             }
         }
         @if (ViewBag.SelectedPage != totalCounter)
         {
-            <a href="/Question/Recent/@totalCounter">&raquo;</a>
+            <a href="/questions/recent/@totalCounter">&raquo;</a>
         }
     </div>
 </div>

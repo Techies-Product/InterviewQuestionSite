@@ -29,7 +29,7 @@
         <div class="interview-inputs">
             <div class="label-container">@Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "interview-label" })</div>
             <div class="editor-container">
-                @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "interview-input", @style = "width:97%",@placeholder ="Provide Tags in Comma Seperated (Ex:Microsoft, Google, Mathhs, Science, Java, ASP.NET etc.)" } })
+                @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "interview-input", @style = "width:97%",@placeholder ="Provide Tags in Comma Seperated (Ex:Microsoft, Google, Maths, Science, Java, ASP.NET etc.)" } })
                 @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
             </div>
         </div>
