@@ -18,15 +18,22 @@
 .question-options ul li{float:right;padding:0 10px 0 0;}
 
 /* Suman's added css in below section*/
-.answer-detail{
-    overflow:hidden;padding-bottom:25px;
+.answer-detail {
+    overflow: hidden;
+    padding-bottom: 25px;
+    font-size: 15px;
+    border: solid;
+    margin: 10px;
+    border-style: ridge;
+    padding:4px;
 }
 .other-info {
     margin: 0 5px;
     font-size: 14px;
     padding: 5px;
+    color: #8f8f8f
 }
-.other-info button {
+.answer-action button {
     padding: 5px;
     background-color: #dcdcdc;
     border: 1px solid #666;
