@@ -14,6 +14,11 @@ namespace InterviewSite
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapMvcAttributeRoutes();
             routes.MapRoute(
+                name: "MembersReWriteRule",
+                url: "members/{id}",
+                defaults: new { controller = "members", action = "Index" }
+            );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

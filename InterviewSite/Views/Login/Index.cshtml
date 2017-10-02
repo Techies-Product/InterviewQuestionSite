@@ -31,10 +31,14 @@
             <input id="btnLogin" type="submit" value="Login" class="interview-btn" style="margin-left:20%;" />
             <div class="error" style="margin-left:20%;margin-top:10px;">@ViewBag.LoginError</div>
         </div>
+        <div class="interview-inputs">
+            <input id="LoginFacebook" onclick="FacebookLogin();" type="button" value="Login with Facebook" class="interview-btn"/><br/><br />
+            <input id="LoginTwitter" type="button" value="Login with Twitter" class="interview-btn"/><br /><br />
+            <input id="LoginGoogle" type="button" value="Login with Google" class="interview-btn"/><br/><br />
+            <input id="LoginLinkedIn" type="button" value="Login with LinkedIn" class="interview-btn"/>
+        </div>
     </div>
 }
-
-
 @section Styles{
     @Styles.Render("~/css/login")
 }

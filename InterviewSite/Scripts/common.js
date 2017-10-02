@@ -34,6 +34,7 @@ function FacebookLogin() {
             jQuery('#hdnAccessToken').val(response.authResponse.accessToken);
             FB.api('/me?fields=email,first_name,last_name', function (response) {
                 try {
+                    alert(response)
                     jQuery('#hdnSocialLoginType').val('fb');
                     jQuery('#HiddenFieldUserId').val(response.id.toString());
                     jQuery('#HiddenFieldEmail').val(response.email.toString());
@@ -50,4 +51,5 @@ function FacebookLogin() {
             console.log('User cancelled login or did not fully authorize.');
         }
     }, { scope: 'publish_actions, email' });
+    return false;
 }

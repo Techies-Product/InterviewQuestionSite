@@ -1,6 +1,9 @@
 ﻿using InterviewSite.Models;
+using Spring.Social.OAuth1;
+using Spring.Social.Twitter.Connect;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -103,6 +106,17 @@ namespace InterviewSite.Controllers
             Session.Abandon();
             Response.Cookies["pwd"].Expires = Response.Cookies["uid"].Expires = DateTime.Now.AddDays(-1);
             return Redirect(Request.UrlReferrer.AbsoluteUri);
+        }
+        public ActionResult TwitterLogin()
+        {
+            string tk = ConfigurationManager.AppSettings["TwitterKey"];
+            string ts = ConfigurationManager.AppSettings["TwitterSecret"];
+            TwitterServiceProvider serviceProvider = new TwitterServiceProvider(tk, ts);
+            IOAuth1Operations oauthOperations = serviceProvider.OAuthOperations;
+            string pageUrl = ConfigurationManager.AppSettings["SiteUrl"];
+            OAuthToken requestToken = oauthOperations.FetchRequestTokenAsync(pageUrl, null).Result;
+            string authorizeUrl = oauthOperations.BuildAuthorizeUrl(requestToken.Value, null);
+            return Redirect(authorizeUrl);
         }
     }
 }
