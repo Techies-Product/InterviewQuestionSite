@@ -9,5 +9,6 @@ namespace InterviewSite.Models
     public interface IAnswerRepository
     {
         bool InsertAnswer(Answer a);
+        int UpvoteDownvote(string answerId, bool IsUpvote,string UserId);
     }
 }

@@ -58,7 +58,7 @@ function deferQuestionLoaded() {
     jQuery("#btnSubmit").click(function () {
         var answer = jQuery(tinymce.get("ReplyAnswer").getBody()).text().trim();
         if (answer.length === 0) { return false; }
-        if (isBusy) { return false;}
+        if (isBusy) { return false; }
         jQuery.ajax({
             url: '/answers/SubmitAnswer',
             type: 'post',
@@ -87,5 +87,38 @@ function deferQuestionLoaded() {
                 isBusy = false;
             }
         });
+    });
+
+    //Upvote Downvote 
+    jQuery("#upvote").click(function () {
+        var answerId = this.getAttribute("data-answerid");
+        UpAndDownVote(answerId, true);
+    });
+    jQuery("#downvote").click(function () {
+        var answerId = this.getAttribute("data-answerid");
+        UpAndDownVote(answerId, false);
+    });
+}
+function UpAndDownVote(ansId, IsUpvote) {
+    jQuery.ajax({
+        url: '/answers/UpvoteDownvote',
+        data: JSON.stringify({ "answerId": ansId, "IsUpvote": IsUpvote }),
+        dataType: 'json',
+        type:'post',
+        contentType: 'application/json',
+        beforeSend: function (xhr) {
+            isBusy = true;
+        },
+        success: function (data) {
+            if (data == 1) {
+                //Here we will write the code for new template...
+            }
+        },
+        error: function (err) {
+            console.log("Error: " + err);
+        },
+        complete: function () {
+            isBusy = false;
+        }
     });
 }

@@ -40,6 +40,7 @@
     <div class="question-info">
         <a href="javascript:void(0)" class="author">@Model.FullName</a>
         <span class="created-date">@Model.CreatedDate.ToString("MMM dd, yyyy")</span>
+        <span class="created-date">@Model.TotalViews</span>
     </div>
     <div class="question-options">
         <ul class="question-option-list">
@@ -72,8 +73,8 @@
 
                         </div>
                         <div class="answer-action">
-                            <input class="button" value="Upvote" type="submit" />
-                            <input class="button" value="downvote" type="submit" />
+                            <input class="button" value="Upvote" data-AnswerId="@item.AnswerId" id="upvote" type="button" />
+                            <input class="button" value="Downvote" data-AnswerId="@item.AnswerId" id="downvote" type="button" />
                         </div>
                     </p>
                 </div>

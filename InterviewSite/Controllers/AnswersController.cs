@@ -31,9 +31,19 @@ namespace InterviewSite.Controllers
                     QuestionId = qid,
                     UserId = Session["UserId"].ToString()
                 };
-                return Json(_iAnswerRepository.InsertAnswer(_answer),JsonRequestBehavior.AllowGet);
+                return Json(_iAnswerRepository.InsertAnswer(_answer), JsonRequestBehavior.AllowGet);
             }
             return Json("Login", JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult UpvoteDownvote(string answerId, bool IsUpvote)
+        {
+            int returnVal = -1;
+            if (!object.Equals(Session["UserId"], null))
+            {
+                returnVal= _iAnswerRepository.UpvoteDownvote(answerId, IsUpvote, Session["UserId"].ToString());
+            }
+            return Json(returnVal,JsonRequestBehavior.AllowGet);
         }
     }
 }
